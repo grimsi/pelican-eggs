@@ -1,0 +1,110 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-08-27T14:59:44+00:00",
+    "name": "Titanfall 2 Northstar",
+    "author": "admin@grimsi.de",
+    "uuid": "5286f108-7d66-457b-b180-f74f409dd378",
+    "description": null,
+    "features": [],
+    "docker_images": {
+        "docker.io\/draakoor\/northstar:latest": "docker.io\/draakoor\/northstar:latest"
+    },
+    "file_denylist": [],
+    "startup": "\/bin\/bash",
+    "config": {
+        "files": "{}",
+        "startup": "{\"done\": \"loading took\"}",
+        "logs": "{\"custom\": true, \"location\": \"logs\/latest.log\"}",
+        "stop": "^C ^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\nmkdir -p \/mnt\/server\/.wine\/drive_c\/windows\/{system32,winsxs,globalization,}\r\nmkdir -p \/mnt\/server\/.wine\/drive_c\/windows\/system32\/{drivers,wbem,spool,Speech}\r\nmkdir -p \/mnt\/server\/.wine\/drive_c\/windows\/system32\/spool\/drivers\/x64\/\r\nmkdir -p \/mnt\/server\/.wine\/drive_c\/windows\/system32\/Speech\/common\/\r\nmkdir -p \/mnt\/server\/.wine\/drive_c\/windows\/globalization\/sorting\r\n\r\n##Setting up Tf2 folder\r\nfor x in \\\r\n    \/mnt\/server\/.wine\/drive_c\/\"Program Files\"\/\"Common Files\"\/System\/*\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/drivers\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/wbem\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/spool\/drivers\/x64\/*\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/Speech\/common\/* \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/winsxs\/*\/* \\\r\n; do \\\r\n    orig=\"\/usr\/lib\/wine\/x86_64-windows\/$(basename \"$x\")\"; \\\r\n    if cmp -s \"$orig\" \"$x\"; then ln -sf \"$orig\" \"$x\"; fi; \\\r\ndone && \\\r\nfor x in \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/globalization\/sorting\/*.nls \\\r\n    \/mnt\/server\/.wine\/drive_c\/windows\/system32\/*.nls \\\r\n; do \\\r\n    orig=\"\/usr\/share\/wine\/nls\/$(basename \"$x\")\"; \\\r\n    if cmp -s \"$orig\" \"$x\"; then ln -sf \"$orig\" \"$x\"; fi; \\\r\n    done",
+            "container": "ghcr.io\/pterodactyl\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Port",
+            "description": "",
+            "env_variable": "NS_PORT",
+            "default_value": "37015",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|numeric",
+            "sort": 1,
+            "field_type": "text"
+        },
+        {
+            "name": "Name",
+            "description": "",
+            "env_variable": "NS_SERVER_NAME",
+            "default_value": "Titanfall 2 Northstar Server",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "sort": 2,
+            "field_type": "text"
+        },
+        {
+            "name": "Description",
+            "description": "",
+            "env_variable": "NS_SERVER_DESC",
+            "default_value": "deployed by Pelican",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "sort": 3,
+            "field_type": "text"
+        },
+        {
+            "name": "Password",
+            "description": "",
+            "env_variable": "NS_SERVER_PASSWORD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "sort": 4,
+            "field_type": "text"
+        },
+        {
+            "name": "Masterserver URL",
+            "description": "Leave empty for default (https:\/\/northstar.tf)",
+            "env_variable": "NS_MASTERSERVER_URL",
+            "default_value": "https:\/\/northstar.tf",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "sort": 5,
+            "field_type": "text"
+        },
+        {
+            "name": "Register on masterserver",
+            "description": "If you disable this option you probably want to allow insecure connections",
+            "env_variable": "NS_MASTERSERVER_REGISTER",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "sort": 6,
+            "field_type": "boolean"
+        },
+        {
+            "name": "Insecure mode",
+            "description": "Allow players to connect without authentication",
+            "env_variable": "NS_INSECURE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "boolean",
+            "sort": 7,
+            "field_type": "boolean"
+        }
+    ]
+}
