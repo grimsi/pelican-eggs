@@ -6,7 +6,7 @@ Feel free to modify them according to your needs. If you implemented something c
 
 List of eggs:
 
-| Game                                            | Credit (if applicable)                                                                                                      |
-|-------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| [Call of Duty 4X](cod4x)                        | [zymsbgt](https://github.com/zymsbgt/Pterodactyl_Egg_Titanfall_2_Northstar),[Drakoor](https://github.com/Draakoor/codptero) |
-| [Titanfall 2 (Northstar)](titanfall2-northstar) |                                                                                                                             |
+| Game                                            | Credit (if applicable)                                                                                                       |
+|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [Call of Duty 4X](cod4x)                        |                                                                                                                              |
+| [Titanfall 2 (Northstar)](titanfall2-northstar) | [zymsbgt](https://github.com/zymsbgt/Pterodactyl_Egg_Titanfall_2_Northstar), [Drakoor](https://github.com/Draakoor/codptero) |
